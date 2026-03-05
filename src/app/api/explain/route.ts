@@ -10,6 +10,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "formulaは必須です" }, { status: 400 });
     }
 
+    const escapedFormula = formula.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
     const prompt = `あなたはExcel数式の解説エキスパートです。
 以下の数式を日本語で分かりやすく解説してください。
 
@@ -18,7 +19,7 @@ export async function POST(req: NextRequest) {
 以下のJSON形式で回答してください。JSON以外のテキストは含めないでください。
 
 {
-  "formula": "${formula}",
+  "formula": "${escapedFormula}",
   "explanation": "数式の詳しい説明（日本語、200文字以内）",
   "functions_used": ["使用されている関数のリスト"],
   "tips": "この数式を使う際のコツや注意点（100文字以内）"

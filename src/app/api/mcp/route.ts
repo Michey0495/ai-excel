@@ -94,6 +94,7 @@ async function handleGenerateFormula(query: string) {
 }
 
 async function handleExplainFormula(formula: string) {
+  const escapedFormula = formula.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
   const prompt = `あなたはExcel数式の解説エキスパートです。
 以下の数式を日本語で分かりやすく解説してください。
 
@@ -102,7 +103,7 @@ async function handleExplainFormula(formula: string) {
 以下のJSON形式で回答してください。JSON以外のテキストは含めないでください。
 
 {
-  "formula": "${formula}",
+  "formula": "${escapedFormula}",
   "explanation": "数式の詳しい説明（日本語）",
   "functions_used": ["使用されている関数のリスト"],
   "tips": "この数式を使う際のコツや注意点"
@@ -115,6 +116,7 @@ async function handleExplainFormula(formula: string) {
 
 async function handleConvertFormula(formula: string, target: string) {
   const targetName = target === "excel" ? "Excel" : "Google スプレッドシート";
+  const escapedFormula = formula.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
   const prompt = `あなたはExcelとGoogle スプレッドシートの数式エキスパートです。
 以下の数式を${targetName}用に変換してください。
 
@@ -124,7 +126,7 @@ async function handleConvertFormula(formula: string, target: string) {
 以下のJSON形式で回答してください。JSON以外のテキストは含めないでください。
 
 {
-  "original": "${formula}",
+  "original": "${escapedFormula}",
   "converted": "変換後の数式",
   "target": "${target}",
   "notes": "変換時の注意点（差異がない場合はその旨記載）"

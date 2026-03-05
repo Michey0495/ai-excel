@@ -221,6 +221,7 @@ export default function FormulaGenerator() {
               </span>
               <button
                 onClick={() => handleCopy(result.formula)}
+                aria-label="数式をコピー"
                 className="text-white/40 hover:text-white text-xs transition-colors cursor-pointer"
               >
                 コピー
@@ -266,6 +267,7 @@ export default function FormulaGenerator() {
               </span>
               <button
                 onClick={() => handleCopy(explainResult.formula)}
+                aria-label="数式をコピー"
                 className="text-white/40 hover:text-white text-xs transition-colors cursor-pointer"
               >
                 コピー
