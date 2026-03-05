@@ -57,8 +57,10 @@ export default function FormulaGenerator() {
 
   function handleCopy() {
     if (!result) return;
-    navigator.clipboard.writeText(result.formula);
-    toast.success("数式をコピーしました");
+    navigator.clipboard.writeText(result.formula).then(
+      () => toast.success("数式をコピーしました"),
+      () => toast.error("コピーに失敗しました")
+    );
   }
 
   function handleKeyDown(e: React.KeyboardEvent) {
@@ -75,6 +77,7 @@ export default function FormulaGenerator() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
+          aria-label="やりたいことを入力"
           placeholder="例: A列の売上合計を求めたい、B列が「東京」の行だけC列を合計したい"
           className="min-h-[100px] bg-white/5 border-white/10 text-white placeholder:text-white/30 resize-none text-base"
           maxLength={500}
