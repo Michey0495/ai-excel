@@ -20,7 +20,7 @@
       { "name": "convert_formula", "description": "ExcelとGoogle スプレッドシート間で数式を変換する" }
     ]
   },
-  "api_endpoints": ["/api/mcp", "/api/generate", "/api/feedback"],
+  "api_endpoints": ["/api/mcp", "/api/generate", "/api/explain", "/api/feedback"],
   "constraints": {
     "rateLimits": {
       "mcp": "10 requests per 10 minutes per IP"

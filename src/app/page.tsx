@@ -23,9 +23,9 @@ export default function Home() {
           <p className="text-white text-xl">
             AIが
             <span className="text-emerald-400 font-bold">最適な数式</span>
-            と
+            を生成、既存数式の
             <span className="text-emerald-400 font-bold">解説</span>
-            を1秒で生成
+            も対応
           </p>
           <p className="text-white/30 text-sm mt-3">
             127人が利用中 -- 登録不要・完全無料

@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: ["/", "/api/mcp"],
-        disallow: ["/api/generate"],
+        disallow: ["/api/generate", "/api/explain"],
       },
     ],
     sitemap: "https://ai-excel.ezoai.jp/sitemap.xml",

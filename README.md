@@ -58,9 +58,16 @@ npm run dev
 - UX改善: サンプルクエリボタン、Ctrl+Enter対応
 - agent.json に api_endpoints 追加
 
+### Night 3 (完了)
+- 数式解説モード: UI上で既存数式の解説が可能に (生成/解説タブ切り替え)
+- /api/explain エンドポイント追加
+- 生成履歴: localStorage で直近10件の生成履歴を保持・再利用
+- robots.txt 重複修正 (static → dynamic のみに統一)
+- agent.json, llms.txt に新エンドポイント追加
+
 ### 実装済み機能一覧
 - [x] 自然言語からExcel数式を生成
-- [x] 数式の日本語解説 (MCP)
+- [x] 数式の日本語解説 (UI + MCP)
 - [x] Excel/Google スプレッドシート間変換 (MCP)
 - [x] MCP Server (JSON-RPC 2.0)
 - [x] AI公開チャネル (llms.txt, agent.json, robots.txt)
@@ -70,3 +77,5 @@ npm run dev
 - [x] フィードバックウィジェット
 - [x] サンプルクエリボタン
 - [x] Ctrl+Enter ショートカット
+- [x] 生成履歴 (localStorage)
+- [x] 数式解説モード (/api/explain)

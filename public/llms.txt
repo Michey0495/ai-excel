@@ -54,6 +54,18 @@ ExcelとGoogle スプレッドシート間で数式を変換する。
 - target (string, required): "excel" または "google_sheets"
 - 戻り値: 元の数式、変換後の数式、注意点
 
+## REST API
+
+### POST /api/generate
+人間向けWebUIからの数式生成リクエスト。
+- query (string, required): やりたいことの説明
+- 戻り値: formula, explanation, examples, category
+
+### POST /api/explain
+数式の解説リクエスト。
+- formula (string, required): 解説してほしい数式
+- 戻り値: formula, explanation, functions_used, tips
+
 ### 制約
 - レート制限: 10回/10分/IP
 - queryの最大長: 500文字
