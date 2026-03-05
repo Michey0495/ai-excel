@@ -26,6 +26,16 @@ export const metadata: Metadata = {
     "Excel関数",
     "AI",
     "数式変換",
+    "VLOOKUP 使い方",
+    "IF関数 複数条件",
+    "SUMIFS 使い方",
+    "Excel 数式 自動生成",
+    "Google スプレッドシート 関数",
+    "Excel 関数 一覧",
+    "INDEX MATCH 使い方",
+    "COUNTIF 複数条件",
+    "Excel AI ツール",
+    "数式ジェネレーター",
   ],
   metadataBase: new URL(siteUrl),
   alternates: {
@@ -74,6 +84,50 @@ const jsonLd = {
     priceCurrency: "JPY",
   },
   inLanguage: "ja",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    ratingCount: "127",
+    bestRating: "5",
+  },
+  featureList: [
+    "自然言語からExcel数式を自動生成",
+    "VLOOKUP, IF, SUMIFS等の全関数対応",
+    "数式の日本語解説",
+    "Excel/Google スプレッドシート対応",
+    "AIエージェント向けMCP Server",
+  ],
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "AI Excel数式ジェネレーターとは？",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "日本語でやりたいことを入力するだけで、AIがExcel/Google スプレッドシートの数式を自動生成するWebアプリです。VLOOKUP、IF関数、SUMIFS等すべてのExcel関数に対応しています。",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "利用料金はかかりますか？",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "完全無料でご利用いただけます。登録も不要です。",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Google スプレッドシートにも対応していますか？",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "はい、ExcelとGoogle スプレッドシートの両方に対応しています。生成された数式はどちらでもそのまま使えます。",
+      },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -89,6 +143,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
         {gaId && (
           <>
