@@ -1,4 +1,6 @@
+import Link from "next/link";
 import FormulaGenerator from "@/components/FormulaGenerator";
+import { FUNCTIONS } from "@/lib/functions-data";
 
 export default function Home() {
   return (
@@ -77,6 +79,33 @@ export default function Home() {
             ))}
           </div>
         </div>
+        <section className="mt-16">
+          <p className="text-white/40 text-xs text-center tracking-widest uppercase mb-6">
+            Excel関数ガイド
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {FUNCTIONS.map((fn) => (
+              <Link
+                key={fn.slug}
+                href={`/functions/${fn.slug}`}
+                className="bg-white/5 border border-white/10 rounded-xl p-3 hover:bg-white/10 transition-all duration-200 cursor-pointer text-center"
+              >
+                <p className="text-emerald-400 font-mono font-bold text-sm">
+                  {fn.name}
+                </p>
+                <p className="text-white/30 text-xs mt-1">{fn.category}</p>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-4">
+            <Link
+              href="/functions"
+              className="text-white/40 text-sm hover:text-white/60 transition-colors"
+            >
+              すべての関数を見る
+            </Link>
+          </div>
+        </section>
       </div>
     </div>
   );
