@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import Script from "next/script";
 import { Toaster } from "sonner";
 import CrossPromo from "@/components/CrossPromo";
+import { FeedbackWidget } from "@/components/FeedbackWidget";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"] });
@@ -117,6 +118,7 @@ export default function RootLayout({
         <footer className="border-t border-white/5 py-8 text-center text-sm text-white/30">
           <p>&copy; 2026 AI Excel数式ジェネレーター</p>
         </footer>
+        <FeedbackWidget repoName="ai-excel" />
         <Toaster position="top-center" richColors />
       </body>
     </html>

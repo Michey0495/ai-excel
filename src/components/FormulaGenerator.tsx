@@ -12,6 +12,13 @@ interface FormulaResult {
   category: string;
 }
 
+const EXAMPLE_QUERIES = [
+  "A列の売上合計を求めたい",
+  "B列が「東京」の行だけC列を合計",
+  "日付から曜日を取得したい",
+  "重複を除いた件数を数えたい",
+];
+
 export default function FormulaGenerator() {
   const [query, setQuery] = useState("");
   const [result, setResult] = useState<FormulaResult | null>(null);
@@ -54,16 +61,35 @@ export default function FormulaGenerator() {
     toast.success("数式をコピーしました");
   }
 
+  function handleKeyDown(e: React.KeyboardEvent) {
+    if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
+      e.preventDefault();
+      handleGenerate();
+    }
+  }
+
   return (
     <div className="w-full max-w-2xl mx-auto">
       <div className="space-y-4">
         <Textarea
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="例: A列の売上合計を求めたい、B列が「東京」の行だけC列を合計したい"
           className="min-h-[100px] bg-white/5 border-white/10 text-white placeholder:text-white/30 resize-none text-base"
           maxLength={500}
         />
+        <div className="flex flex-wrap gap-2">
+          {EXAMPLE_QUERIES.map((eq) => (
+            <button
+              key={eq}
+              onClick={() => setQuery(eq)}
+              className="text-xs text-white/40 bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 hover:bg-white/10 hover:text-white/60 transition-all duration-200 cursor-pointer"
+            >
+              {eq}
+            </button>
+          ))}
+        </div>
         <Button
           onClick={handleGenerate}
           disabled={loading || !query.trim()}
@@ -71,6 +97,7 @@ export default function FormulaGenerator() {
         >
           {loading ? "生成中..." : "数式を生成"}
         </Button>
+        <p className="text-xs text-white/20 text-center">Ctrl + Enter でも生成できます</p>
       </div>
 
       {result && (
