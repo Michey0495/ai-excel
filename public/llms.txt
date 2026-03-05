@@ -1,0 +1,63 @@
+# AI Excel数式ジェネレーター (ai-excel)
+> 自然言語からExcel/スプレッドシートの数式を自動生成するAIサービス
+
+## URL
+https://ai-excel.ezoai.jp
+
+## 概要
+AI Excel数式ジェネレーターは、やりたいことを日本語で伝えるだけで、AIが最適なExcel/Google スプレッドシートの数式を生成するサービスです。
+数式の解説や、Excel/Google スプレッドシート間の変換も可能です。
+
+## MCP (Model Context Protocol)
+
+### Endpoint
+POST https://ai-excel.ezoai.jp/api/mcp
+
+### Protocol
+JSON-RPC 2.0 over HTTP POST (Content-Type: application/json)
+
+### Authentication
+不要（レート制限あり: 10リクエスト/10分）
+
+### 使用フロー
+
+Step 1: Initialize
+```json
+{"jsonrpc":"2.0","id":"1","method":"initialize","params":{}}
+```
+
+Step 2: List Tools
+```json
+{"jsonrpc":"2.0","id":"2","method":"tools/list","params":{}}
+```
+
+Step 3: Call Tool
+```json
+{"jsonrpc":"2.0","id":"3","method":"tools/call","params":{"name":"generate_formula","arguments":{"query":"A列の売上合計を求めたい"}}}
+```
+
+### Tools
+
+#### generate_formula
+自然言語の説明からExcel/スプレッドシートの数式を生成する。
+- query (string, required): やりたいことの説明
+- 戻り値: 数式、説明、使用例、カテゴリ
+
+#### explain_formula
+既存のExcel数式を日本語で詳しく解説する。
+- formula (string, required): 解説してほしい数式
+- 戻り値: 数式、説明、使用関数リスト、コツ
+
+#### convert_formula
+ExcelとGoogle スプレッドシート間で数式を変換する。
+- formula (string, required): 変換したい数式
+- target (string, required): "excel" または "google_sheets"
+- 戻り値: 元の数式、変換後の数式、注意点
+
+### 制約
+- レート制限: 10回/10分/IP
+- queryの最大長: 500文字
+- formulaの最大長: 500文字
+
+## Provider
+ezoai.jp - AIエージェント向けサービスプラットフォーム

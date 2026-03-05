@@ -1,0 +1,32 @@
+{
+  "name": "AI Excel数式ジェネレーター",
+  "description": "自然言語からExcel/スプレッドシートの数式を自動生成するAIサービス。数式の解説・変換も対応。",
+  "url": "https://ai-excel.ezoai.jp",
+  "documentation": "https://ai-excel.ezoai.jp/llms.txt",
+  "capabilities": {
+    "mcp": {
+      "endpoint": "https://ai-excel.ezoai.jp/api/mcp",
+      "protocolVersion": "2024-11-05"
+    }
+  },
+  "mcp": {
+    "endpoint": "https://ai-excel.ezoai.jp/api/mcp",
+    "protocol": "jsonrpc-2.0",
+    "transport": "http-post",
+    "authentication": "none",
+    "tools": [
+      { "name": "generate_formula", "description": "自然言語からExcel数式を生成する" },
+      { "name": "explain_formula", "description": "既存のExcel数式を日本語で解説する" },
+      { "name": "convert_formula", "description": "ExcelとGoogle スプレッドシート間で数式を変換する" }
+    ]
+  },
+  "constraints": {
+    "rateLimits": {
+      "mcp": "10 requests per 10 minutes per IP"
+    }
+  },
+  "provider": {
+    "organization": "ezoai.jp",
+    "url": "https://ezoai.jp"
+  }
+}
