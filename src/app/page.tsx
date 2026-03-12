@@ -30,7 +30,7 @@ export default function Home() {
             も対応
           </p>
           <p className="text-white/30 text-sm mt-3">
-            127人が利用中 -- 登録不要・完全無料
+            登録不要・完全無料
           </p>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
